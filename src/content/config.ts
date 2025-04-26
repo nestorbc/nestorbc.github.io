@@ -5,8 +5,8 @@ import { glob } from "astro/loaders";
 // When updating the set of searchable collections, update collectionList in /src/pages/search.astro
 
 const searchable = z.object({
-  title: z.string(),
-  description: z.string().optional(),
+  title: "Néstor Borràs",
+  description: "Here it is my personal blog",
   autodescription: z.boolean().default(true),
   draft: z.boolean().default(false),
 });
@@ -92,17 +92,7 @@ const home = defineCollection({
     }),
 });
 
-const indexCards = defineCollection({
-  loader: glob({
-    pattern: "-index.{md,mdx}",
-    base: "./src/content/index-cards",
-  }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    cards: z.array(z.string()),
-  }),
-});
+
 
 const poetry = defineCollection({
   loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/poetry" }),
@@ -169,7 +159,6 @@ export const collections = {
   blog,
   docs,
   home,
-  indexCards,
   poetry,
   portfolio,
   recipes,
